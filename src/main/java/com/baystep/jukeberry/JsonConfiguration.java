@@ -16,18 +16,15 @@
  */
 package com.baystep.jukeberry;
 
-import com.baystep.jukeberry.musicplayer.SourceDescription;
+import com.baystep.audio.musicplayer.SourceDescription;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 
 /**

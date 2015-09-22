@@ -17,7 +17,6 @@
 package com.baystep.webservices;
 
 import com.baystep.jukeberry.BerryLogger;
-import com.baystep.jukeberry.BerryMusic;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -101,7 +100,7 @@ public class WebServer extends Thread {
             return;
         }
         
-        BerryLogger.LOG.log(Level.INFO, "Socket listening to port {0}", listenPort);
+        BerryLogger.LOG.log(Level.INFO, "Server listening to port {0}", listenPort);
         
         while(continueLoop) {
             try {

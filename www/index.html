@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Page</title>
+</head>
+<body>
+	<h1>It Works!</h1>
+	<p>Congrats buddy!</p>
+	<br><hr>
+	<div id="responseOutput">
+	</div>
+	<input type="text" id="messageText">
+	<input type="button" id="submit" value="SEND" onClick="sendMessage();">
+	<script language="javascript" type="text/javascript">
+		var socketAddr = "ws://localhost:9090";
+		var output, websocket;
+
+		function init() {
+			output = document.getElementById("responseOutput");
+			
+			websocket = new WebSocket(socketAddr);
+			websocket.onopen = onOpen;
+			websocket.onclose = onClose;
+			websocket.onmessage = onMessage;
+			websocket.onerror = onError;
+		}
+
+		function write(message) {
+			var line = document.createElement("p");
+			line.style.wordWrap = "break-word";
+			line.innerHTML = message;
+			output.appendChild(line);
+		}
+
+		function onOpen(evt) {
+			write("CONNECTED");
+		}
+
+		function onClose(evt) {
+			write("DISCONNECTED");
+		}
+
+		function onError(evt) {
+			write("<span style='color: red;'>ERROR: "+evt.data+"</span>");
+		}
+
+		function onMessage(evt) {
+			write("<span style='color: blue;'>"+evt.data+"</span>");
+		}
+
+		function sendMessage() {
+			var msg = document.getElementById("messageText").value;
+			write("<span style='color: green;'>> "+msg+"</span>");
+			websocket.send(msg);
+		}
+
+		window.addEventListener("load", init, false);
+	</script>
+</body>
+</html>

@@ -18,7 +18,7 @@ package com.baystep.jukeberry;
 
 import com.baystep.webservices.SocketServer;
 import com.baystep.webservices.WebServer;
-import com.baystep.jukeberry.musicplayer.MusicPlayer;
+import com.baystep.audio.musicplayer.MusicPlayer;
 import java.io.IOException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -33,7 +33,7 @@ import org.apache.commons.cli.ParseException;
  * Starts a web server, web socket server, and the MusicPlayer thread.
  * @author Baystep/Chris Pikul
  */
-public class BerryMusic {
+public class JukeBerry {
     private static final String help_Header = "Turn your RaspberryPi into a virtual jukebox of amazingness!\n\n";
     private static final String help_Footer = "\nCopyright 2015 Baystep and Chris Pikul, all rights reserved."
             +"\nIf any issues are present, please contact me at BaystepMedia@gmail.com";
@@ -43,7 +43,7 @@ public class BerryMusic {
     
     public JsonConfiguration config;
     
-    public BerryMusic() {
+    public JukeBerry() {
         // Setup LOGGING
         try {
             BerryLogger.init();
@@ -62,7 +62,7 @@ public class BerryMusic {
     public static void main(String[] args) {
         System.out.println("Berry Music\n");
         
-        BerryMusic bm = new BerryMusic();
+        JukeBerry bm = new JukeBerry();
         
         buildOptions();
         CommandLineParser cmdParser = new DefaultParser();
@@ -139,9 +139,10 @@ public class BerryMusic {
         } else
             BerryLogger.LOG.info("WebSocket server has been disabled.");
         
-        MusicPlayer mp = new MusicPlayer(this);
+        MusicPlayer mp = new MusicPlayer();
         mp.localSearchDirectories = config.mpDirectories;
         mp.sourceDescriptions = config.mpSources;
+        mp.startService = config.mpStartService;
         mp.init();
     }
     

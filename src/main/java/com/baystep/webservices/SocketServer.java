@@ -17,7 +17,7 @@
 package com.baystep.webservices;
 
 import com.baystep.jukeberry.BerryLogger;
-import com.baystep.jukeberry.BerryMusic;
+import com.baystep.jukeberry.JukeBerry;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
