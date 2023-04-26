@@ -1,0 +1,10 @@
+[package]
+name = "jukeberry"
+version = "2.0.0"
+authors = ["Chris Pikul <ChrisPikul510@gmail.com"]
+edition = "2021"
+description = "RaspberryPI application for streaming music from other devices"
+readme = "README.md"
+repository = "https://github.com/chris-pikul/JukeBerry.git"
+license = "MIT"
+publish = false
